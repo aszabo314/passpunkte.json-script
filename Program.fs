@@ -16,7 +16,14 @@ let system = "+proj=tmerc +lat_0=0 +lon_0=31 +k=1 +x_0=0 +y_0=-5000000 +ellps=be
 let files = 
     Directory.GetFiles(infolder)
     |> Array.filter (fun p -> Path.GetExtension(p).ToLowerInvariant() = ".json")
-    |> Array.choose (fun p ->let nn = Path.GetFileNameWithoutExtension(p) in if nn="passpunkte" then None else Some (nn, p))
+    |> Array.choose (fun p ->
+        let nn = Path.GetFileNameWithoutExtension(p)  
+        if nn="passpunkte" then 
+            None 
+        else 
+            let name = if nn.ToLowerInvariant().EndsWith("_points") then nn.Substring(0,nn.Length-7) else nn
+            Some (name, p)
+    )
 
 let mutable points = Map.empty
 let obses = 
