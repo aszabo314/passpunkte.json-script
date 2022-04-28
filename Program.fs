@@ -7,10 +7,10 @@ open FSharp.Data
 System.Globalization.CultureInfo.DefaultThreadCurrentCulture <- System.Globalization.CultureInfo.InvariantCulture
 System.Globalization.CultureInfo.DefaultThreadCurrentUICulture <- System.Globalization.CultureInfo.InvariantCulture
 [<Literal>]
-let ss = @"https://raw.githubusercontent.com/aszabo314/passpunkte.json-script/master/DJI_0042_points.json"
+let ss = @"C:\bla\foto\befliegung_knauf_Q2_2021\Ortho-Knauf_Q2\DJI_0465_points.json"
 type Pp = JsonProvider<ss>
 
-let infolder = @"C:\bla\passpunkte\knauf_Q4_2021-ortho"
+let infolder = @"C:\bla\foto\befliegung_knauf_Q2_2021\Ortho-Knauf_Q2"
 let system = "+proj=tmerc +lat_0=0 +lon_0=31 +k=1 +x_0=0 +y_0=-5000000 +ellps=bessel +pm=ferro +towgs84=577.326,90.129,463.919,5.137,1.474,5.297,2.4232 +units=m +no_defs +type=crs"
 
 let files = 
@@ -39,9 +39,9 @@ let obses =
                         if n.Length = 1 then 
                             Some n.[0]
                         elif n.Length = 4 then 
-                            let x = System.Double.Parse n.[1]
-                            let y = System.Double.Parse n.[2]
-                            let z = System.Double.Parse n.[3]
+                            let x = System.Double.Parse (n.[1].Replace(",","."))
+                            let y = System.Double.Parse (n.[2].Replace(",","."))
+                            let z = System.Double.Parse (n.[3].Replace(",","."))
                             let name = n.[0]
                             points <- points |> Map.add name [|x;y;z|]
                             Some name
