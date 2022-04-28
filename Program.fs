@@ -6,9 +6,8 @@ open FSharp.Data
 
 System.Globalization.CultureInfo.DefaultThreadCurrentCulture <- System.Globalization.CultureInfo.InvariantCulture
 System.Globalization.CultureInfo.DefaultThreadCurrentUICulture <- System.Globalization.CultureInfo.InvariantCulture
-
 [<Literal>]
-let ss = @"C:\bla\passpunkte\knauf_Q4_2021-ortho\DJI_0004_points.json"
+let ss = @"https://raw.githubusercontent.com/aszabo314/passpunkte.json-script/master/DJI_0042_points.json"
 type Pp = JsonProvider<ss>
 
 let infolder = @"C:\bla\passpunkte\knauf_Q4_2021-ortho"
