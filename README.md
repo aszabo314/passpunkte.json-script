@@ -1,0 +1,1 @@
+Converts passpunktEinzeichner files to `passpunkte.json`
